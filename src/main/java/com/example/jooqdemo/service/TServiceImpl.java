@@ -4,7 +4,7 @@ import com.example.jooqdemo.gen.tables.Author;
 import com.example.jooqdemo.gen.tables.AuthorBook;
 import com.example.jooqdemo.gen.tables.Book;
 import org.jooq.DSLContext;
-import org.jooq.Record4;
+import org.jooq.Record3;
 import org.jooq.Result;
 import org.jooq.impl.DSL;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,8 +38,8 @@ public class TServiceImpl implements TService {
 
     @Override
     public Result getJoin() {
-        Result<Record4<Integer, String, Integer, String>> result = dsl
-                .select(author.ID, author.LAST_NAME, DSL.count(), book.TITLE)
+        Result<Record3<Integer, String, Integer>> result = dsl
+                .select(author.ID, author.LAST_NAME, DSL.count())
                 .from(author)
                 .join(authorBook)
                 .on(author.ID.equal(authorBook.AUTHOR_ID))

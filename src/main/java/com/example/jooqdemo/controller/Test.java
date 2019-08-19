@@ -1,5 +1,6 @@
 package com.example.jooqdemo.controller;
 
+import com.example.jooqdemo.gen.tables.Author;
 import com.example.jooqdemo.gen.tables.Book;
 import com.example.jooqdemo.service.TService;
 import org.jooq.Result;
@@ -11,7 +12,7 @@ import java.util.List;
 
 @RestController
 public class Test {
-    Book book = Book.BOOK;
+    Author author = Author.AUTHOR;
     @Autowired
     private TService tService;
 
@@ -23,6 +24,6 @@ public class Test {
     @GetMapping("/join")
     public List<String> join() {
         Result r = tService.getJoin();
-        return r.getValues(book.TITLE);
+        return r.getValues(author.LAST_NAME);
     }
 }
